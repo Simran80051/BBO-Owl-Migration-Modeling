@@ -1,137 +1,167 @@
-# 🦉 BBO Owl Detection & Movement Modeling  
-### Behavioral Insights, Predictive Modeling, and Explainable AI
+# 🦉 BBO Owl Detection & Movement Analysis
 
-## 📌 Project Overview
-This project was developed in collaboration with the **Beaverhill Bird Observatory (BBO)** to analyze and model the movement behavior of **Northern Saw-whet Owls** using data from the **Motus Wildlife Tracking System**.
+### Behavioral Patterns, Predictive Modeling, and Explainable Machine Learning
 
-The project delivers a complete **end-to-end machine learning pipeline**, transforming raw wildlife telemetry data into **interpretable behavioral insights** through data analysis, predictive modeling, explainable AI, and an interactive Streamlit application.
+## 📌 Project Summary
 
----
+This project was completed in partnership with the **Beaverhill Bird Observatory (BBO)** to study and model the movement behavior of **Northern Saw-whet Owls** using telemetry data collected through the **Motus Wildlife Tracking System**.
 
-## 🎯 Objectives
-- Analyze owl movement patterns across time, direction, and signal strength  
-- Engineer meaningful behavioral features from raw telemetry detections  
-- Build machine learning models to:
-  - Classify migration activity  
-  - Predict detection duration  
-  - Predict signal strength (SNR)  
-- Apply **Explainable AI (SHAP)** to ensure model transparency  
-- Deploy an interactive **Streamlit dashboard** for researchers and stakeholders  
+The work presents a full **end-to-end data science workflow**, starting from raw wildlife telemetry data and progressing through exploratory analysis, feature engineering, machine learning, explainable AI, and deployment via an interactive **Streamlit** application. The goal is to transform complex tracking data into actionable and interpretable ecological insights.
 
 ---
 
-## 🗂️ Dataset Description
-- **Source:** Motus Wildlife Tracking System (via BBO)  
-- **Monitoring Period:** July 2024 – November 2024  
-- **Dataset Size:**  
-  - 102,678 detection records  
-  - 57 features (raw + engineered)
+## 🎯 Project Goals
 
-### Key Data Features
-- Telemetry signals: signal strength (SNR), noise, frequency drift  
-- Temporal data: timestamps, hour, day, month  
-- Antenna direction / port data (SE, SW, N, Omni)  
-- Tag deployment metadata  
-- Engineered features:
-  - `migration_activity`
-  - `direction_str`
-  - `days_since_deployment`
-  - Movement category labels  
+* Examine owl movement behavior across time, direction, and signal characteristics
+* Engineer behaviorally meaningful features from raw detection data
+* Develop machine learning models to:
+
+  * Classify migratory vs. non-migratory activity
+  * Predict detection duration
+  * Predict signal strength (SNR)
+* Apply **Explainable AI (SHAP)** to interpret model predictions
+* Deploy an interactive Streamlit dashboard for researchers and stakeholders
 
 ---
 
-## 🔍 Exploratory Data Analysis (EDA)
-Key insights from EDA include:
-- Peak detection activity between **4–8 AM**, confirming nocturnal behavior  
-- Highest detections during **September–October**, aligning with fall migration  
-- Dominant movement directions toward **SE and SW**  
-- Migratory detections exhibit **higher SNR values**  
-- Signal strength decreases over time due to tag aging  
-- Distinct movement categories such as one-night passage, short-stay, and multi-day migrants  
+## 🗂️ Data Overview
 
-EDA results are available through visualizations embedded in the Streamlit app.
+**Data Source:** Motus Wildlife Tracking System (via BBO)
+**Study Period:** July 2024 – November 2024
+
+**Dataset Size**
+
+* 102,678 detection records
+* 57 total features (raw + engineered)
+
+### Core Features
+
+* **Telemetry metrics:** signal-to-noise ratio (SNR), noise, frequency drift
+* **Temporal variables:** timestamp, hour, day, month
+* **Antenna & direction data:** SE, SW, N, Omni
+* **Tag deployment metadata**
+
+### Engineered Variables
+
+* `migration_activity`
+* `direction_str`
+* `days_since_deployment`
+* Movement category labels
+
+---
+
+## 🔍 Exploratory Data Analysis
+
+Key observations from exploratory analysis include:
+
+* Detection activity peaks between **4–8 AM**, reflecting nocturnal owl behavior
+* **September–October** shows the highest detection frequency, consistent with fall migration
+* Predominant movement directions are **southeast and southwest**
+* Migratory detections tend to have **higher SNR values**
+* Signal strength declines gradually as tag age increases
+* Distinct movement patterns emerge, including one-night passers, short stays, and multi-day migrants
+
+All EDA findings are visualized within the Streamlit application.
 
 ---
 
 ## 🤖 Machine Learning Models
-Three machine learning models were developed using **Random Forest** algorithms:
 
-### Model A – Migration Activity Classification
-- **Type:** Binary Classification  
-- **Goal:** Predict migratory vs non-migratory detections  
-- **Techniques:** SMOTE for class imbalance  
-- **Performance:**  
-  - Accuracy: ~96%  
-  - F1-score: ~0.97  
+Three **Random Forest–based models** were trained and evaluated:
 
-### Model B – Detection Duration Regression
-- **Type:** Regression  
-- **Goal:** Predict duration of owl detection events  
-- **Performance:**  
-  - R² ≈ 0.99  
+### **Model A – Migration Activity Classification**
 
-### Model C – Signal Strength (SNR) Regression
-- **Type:** Regression  
-- **Goal:** Predict signal strength based on tag age and movement features  
-- **Performance:**  
-  - R² ≈ 0.85  
+* **Type:** Binary Classification
+* **Objective:** Identify migratory vs. non-migratory detections
+* **Technique:** SMOTE applied to handle class imbalance
+* **Performance:**
+
+  * Accuracy ≈ 96%
+  * F1-score ≈ 0.97
+
+### **Model B – Detection Duration Prediction**
+
+* **Type:** Regression
+* **Objective:** Predict duration of detection events
+* **Performance:**
+
+  * R² ≈ 0.99
+
+### **Model C – Signal Strength (SNR) Prediction**
+
+* **Type:** Regression
+* **Objective:** Estimate signal strength based on movement and tag-age features
+* **Performance:**
+
+  * R² ≈ 0.85
 
 ---
 
 ## 🧠 Explainable AI (XAI)
-To ensure transparency and interpretability:
-- **SHAP** was used for both global and local explanations  
-- Feature importance highlights key predictors such as:
-  - Signal strength  
-  - Direction of movement  
-  - Time of detection  
-  - Days since deployment  
 
-XAI outputs are integrated directly into the Streamlit application.
+Model interpretability was prioritized using **SHAP**:
 
----
+* Both **global and local explanations** were generated
+* Key influential features include:
 
-## 🚀 Deployment
-The project is deployed as a **multi-page Streamlit application**, enabling users to:
-- Explore EDA interactively  
-- Run predictions using trained models  
-- Interpret results through SHAP visualizations  
-- Explore owl movement behavior via dashboards  
+  * Signal strength
+  * Movement direction
+  * Time of detection
+  * Days since tag deployment
 
-### Tools Used
-- Python, Pandas, NumPy  
-- Scikit-learn  
-- SHAP  
-- Plotly  
-- Streamlit  
-- GitHub  
-- Google Colab  
+SHAP visualizations are embedded directly into the Streamlit dashboard for transparent interpretation.
 
 ---
 
+## 🚀 Application Deployment
+
+The project is deployed as a **multi-page Streamlit application**, allowing users to:
+
+* Explore EDA results interactively
+* Generate predictions using trained ML models
+* Interpret outputs through SHAP plots
+* Visualize owl movement behavior through dashboards
 
 ---
 
-## ⚠️ Challenges & Solutions
-- **Noisy telemetry data:** Cleaned and standardized timestamps and signals  
-- **Imbalanced classes:** Addressed using SMOTE  
-- **Large model sizes:** Optimized storage and deployment strategy  
-- **Complex behavior patterns:** Used tree-based models for robustness  
+## 🛠️ Tools & Technologies
+
+* Python, Pandas, NumPy
+* Scikit-learn
+* SHAP
+* Plotly
+* Streamlit
+* GitHub
+* Google Colab
 
 ---
 
-## 👥 Stakeholder Collaboration
-- Continuous feedback from BBO researchers  
-- Focus on multi-day tag analysis (e.g., tags 80830, 80821, 80805)  
-- Visualization and modeling aligned with ecological research needs  
+## ⚠️ Challenges & Mitigation
+
+* **Noisy telemetry signals:** Cleaned and standardized timestamps and signal values
+* **Class imbalance:** Addressed using SMOTE
+* **Large model artifacts:** Optimized model storage and deployment
+* **Complex movement behavior:** Tree-based models chosen for robustness and interpretability
 
 ---
 
-## ✅ Conclusion
-This project successfully demonstrates how machine learning and explainable AI can support ecological research. By integrating predictive modeling, interpretability, and interactive deployment, the solution provides BBO with a scalable and transparent tool to better understand owl migration behavior and telemetry patterns.
+## 👥 Collaboration & Stakeholder Input
+
+* Ongoing feedback from BBO researchers
+* Emphasis on multi-day tag analysis (e.g., tags 80830, 80821, 80805)
+* Modeling and visualization decisions aligned with ecological research priorities
+
+---
+
+## ✅ Final Remarks
+
+This project demonstrates how **machine learning combined with explainable AI** can effectively support ecological research. By integrating predictive modeling, transparency, and interactive deployment, the solution provides BBO with a scalable and interpretable framework for understanding owl migration dynamics and telemetry behavior.
 
 ---
 
 ## 📎 Repository
-🔗 GitHub: https://github.com/lakshitamarkanday777/bbo-project
+
+🔗 GitHub Repository: 
+
+---
 
